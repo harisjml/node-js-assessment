@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_HOST=host.docker.internal
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=password
+      - DB_NAME=assessment-haris
+    volumes:
+      - .:/usr/src/app
+    # depends_on:
+    #   - db
+#   docker conflict port, comment first
+#   db:
+#     image: mysql:8.0
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: password
+#       MYSQL_DATABASE: assessment-haris
+#     ports:
+#       - "3307:3306" #if port 3306 used so used 3307
+#     volumes:
+#       - db-data:/var/lib/mysql
+
+# volumes:
+#   db-data:
